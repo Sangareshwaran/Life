@@ -10,6 +10,13 @@ const observer = new IntersectionObserver((enteries) => {
     });
 })
 
+const ks = new Audio('main.mp3')
+let userinteraction = 0
+document.addEventListener('click',()=>{
+ if(userinteraction) return;
+ userinteraction++;
+ ks.play()
+})
 
 const hiddenElements = document.querySelectorAll('.hidden');
 hiddenElements.forEach((el) => observer.observe(el));
@@ -27,13 +34,13 @@ function updateCounter() {
     const seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
 
     // Construct the display string
-    let displayString = "Entered this planet ";
+    let displayString = "";
 
     if (years > 0) displayString += `${years} years, `;
     if (days > 0) displayString += `${days} days, `;
     if (hours > 0) displayString += `${hours} hours, `;
     if (minutes > 0) displayString += `${minutes} minutes, `;
-    if (seconds > 0) displayString += `${seconds} seconds ago`;
+    if (seconds > 0) displayString += `${seconds} seconds`;
 
     // Trim any trailing comma and space
     displayString = displayString.replace(/, $/, "");
